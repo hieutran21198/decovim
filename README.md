@@ -1,0 +1,2 @@
+# decovim
+Decorated Neovim
