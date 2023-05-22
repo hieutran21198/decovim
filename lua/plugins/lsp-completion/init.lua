@@ -73,6 +73,31 @@ local M = {
 			require("plugins.lsp-completion.gitsigns")
 		end,
 	},
+	{
+		"ellisonleao/glow.nvim",
+		config = function()
+			require("plugins.lsp-completion.glow")
+		end,
+	},
+	{
+		"ray-x/go.nvim",
+		event = { "CmdlineEnter" },
+		ft = { "go", "gomod" },
+		build = ':lua require("go.install").update_all_sync()',
+		config = function()
+			require("plugins.lsp-completion.go")
+		end,
+	},
+	{
+		"ThePrimeagen/refactoring.nvim",
+		dependencies = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+		config = function()
+			require("plugins.lsp-completion.refactoring")
+		end,
+	},
 }
 
 return M

@@ -163,6 +163,7 @@ cmp.setup.cmdline(":", {
 		{ name = "cmdline" },
 	}),
 })
+
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 local server_config_handler = require("plugins.lsp-completion.lspconfig.servers")

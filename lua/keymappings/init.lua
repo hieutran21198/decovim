@@ -16,9 +16,18 @@ local normal = {
 			"  LSP context",
 		},
 		i = { "<cmd>IconPickerYank<cr>", " Yank icon" },
+		m = { "<cmd>Glow<cr>", " Markdown preview" },
 	},
 	["<leader>1"] = { "<cmd>FloatermToggle<cr>", " Terminal" },
 	["<leader>t"] = { "<cmd>FloatermToggle<cr>", " Terminal" },
+	["<leader>d"] = {
+		name = " Debug",
+		c = { "<cmd>lua require('dap').continue()<cr>", " Continue" },
+		i = { "<cmd>lua require('dap').step_into()<cr>", " Step into" },
+		o = { "<cmd>lua require('dap').step_over()<cr>", " Step over" },
+		O = { "<cmd>lua require('dap').step_out()<cr>", " Step out" },
+		b = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", " Toggle breakpoint" },
+	},
 	["<leader>e"] = { vim.cmd.NeoTreeFocusToggle, " NeoTree" },
 	["<leader>f"] = {
 		name = " Finding",
@@ -134,6 +143,10 @@ local normal = {
 local visual = {
 	d = { '"_d', "Delete without saving content to register" },
 	f = { '"zy:Telescope live_grep default_text=<C-r>z<cr>', " Find current text." },
+	["<leader>l"] = {
+		name = " LSP",
+		a = { ":'<,'>lua vim.lsp.buf.range_code_action()<CR>", " Code action" },
+	},
 }
 
 local terminal = {

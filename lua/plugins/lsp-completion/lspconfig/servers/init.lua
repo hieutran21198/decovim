@@ -1,5 +1,6 @@
 local M = function(opt)
 	local servers_configs = {
+		marksman = { on_attach = opt.on_attach, flags = opt.lsp_flags, capabilities = opt.capabilities },
 		tsserver = {
 			on_attach = opt.on_attach,
 			flags = opt.lsp_flags,

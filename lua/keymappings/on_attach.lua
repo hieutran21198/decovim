@@ -5,11 +5,8 @@ local M = {
 				{
 					mappings = {
 						["<leader>"] = {
-							d = { vim.diagnostic.open_float, " Diagnostic" },
-							q = { vim.diagnostic.setloclist, " Diagnostic to loclist" },
 							l = {
 								name = " LSP",
-								-- d = { vim.lsp.buf.definition, " Definition" },
 								d = { "<cmd>TroubleToggle lsp_definitions<cr>", " Definition" },
 								D = { vim.lsp.buf.declaration, " Declaration" },
 								i = { vim.lsp.buf.implementation, " Implementation" },
