@@ -1,0 +1,85 @@
+snippet usecase_echo "usecase template"
+	import (
+		"net/http"
+
+		"github.com/labstack/echo/v4"
+	)
+
+	type (
+		// $1Request contains the request data for the $1 API.
+		$1Request struct{}
+
+		// $1Response contains the response data for the $1 API.
+		$1Response struct{}
+	)
+
+	// Validate validates the $1Request.
+	func (req *$1Request) Validate() error {
+		// validation code here
+		return nil
+	}
+
+	func (h *HTTP) $1(ctx echo.Context) error {
+		req := new($1Request)
+		if err := ctx.Bind(req); err != nil {
+			return err
+		}
+
+		res, err := h.srv.$1(ctx, req)
+		if err != nil {
+			return err
+		}
+
+		return ctx.JSON(http.StatusCreated, res)
+	}
+
+	func (s *service) $1(ctx echo.Context, req *$1Request) (*$1Response, error) {
+		if err := req.Validate(); err != nil {
+			return nil, err
+		}
+
+		// business logic
+		res := new($1Response)
+		return res, nil
+	}
+
+snippet swaggo "REST swaggo template"
+	// $1 is the HTTP handler for the $1 API.
+	// @Summary $5
+	// @Description $5
+	// @Tags $2
+	// @Accept json
+	// @Produce json
+	// @Param req body $1Request true "Request data"
+	// @Success 201 {object} $1Response "Response data"
+	// @Success 400 {object} model.APIError "API common error"
+	// @Failure 500 {object} model.APIError "API common error"
+	// @Router $3 [$4]
+
+snippet service "Service template"
+	// service handles business operations.
+	type service struct {
+		${1:repo *repository.Repositories}
+	}
+
+	// New creates new Service.
+	func New(${1:repo *repository.Repositories}) *service {
+		s := &service{
+		${2:repo: repo}
+		}
+
+		return s
+	}
+
+snippet http "HTTP handler template"
+	// HTTP is the HTTP handler for the $1 API.
+	type HTTP struct {
+		srv *service
+	}
+
+	// New creates new HTTP.
+	func NewHTTP(srv *service) *HTTP {
+		h := &HTTP{srv: srv}
+
+		return h
+	}
