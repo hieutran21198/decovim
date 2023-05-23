@@ -17,7 +17,7 @@ M.bind_sources = function(builtins)
 		diagnostics.editorconfig_checker,
 		diagnostics.eslint_d,
 		diagnostics.fish,
-		diagnostics.golangci_lint,
+		-- diagnostics.golangci_lint,
 		-- diagnostics.revive,
 		diagnostics.staticcheck,
 		diagnostics.write_good,
@@ -27,7 +27,8 @@ M.bind_sources = function(builtins)
 		diagnostics.shellcheck,
 
 		code_actions.shellcheck,
-		code_actions.gitsigns,
+		-- NOTE: disable for performance
+		-- code_actions.gitsigns,
 
 		code_actions.eslint_d,
 

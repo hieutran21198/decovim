@@ -1,3 +1,4 @@
+local terminal_util = require("plugins.ui.terminal.util")
 local normal = {
 	["<leader>u"] = {
 		name = " Utils",
@@ -18,8 +19,14 @@ local normal = {
 		i = { "<cmd>IconPickerYank<cr>", " Yank icon" },
 		m = { "<cmd>Glow<cr>", " Markdown preview" },
 	},
-	["<leader>1"] = { "<cmd>FloatermToggle<cr>", " Terminal" },
-	["<leader>t"] = { "<cmd>FloatermToggle<cr>", " Terminal" },
+	["<leader>1"] = {
+		function()
+			terminal_util.toggle(1)
+		end,
+		" Terminal",
+	},
+	-- ["<leader>1"] = { "<cmd>FloatermToggle<cr>", " Terminal" },
+	-- ["<leader>t"] = { "<cmd>FloatermToggle<cr>", " Terminal" },
 	["<leader>d"] = {
 		name = " Debug",
 		c = { "<cmd>lua require('dap').continue()<cr>", " Continue" },
@@ -134,7 +141,7 @@ local normal = {
 	["<esc>"] = {
 		function()
 			vim.cmd([[nohl]])
-			vim.cmd("FloatermHide")
+			-- vim.cmd("FloatermHide")
 		end,
 		"Map ESC",
 	},

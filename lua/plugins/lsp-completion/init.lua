@@ -67,12 +67,13 @@ local M = {
 			require("plugins.lsp-completion.lspconfig")
 		end,
 	},
-	{
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("plugins.lsp-completion.gitsigns")
-		end,
-	},
+	-- NOTE: disabled gitsigns because of poor performance
+	-- {
+	-- 	"lewis6991/gitsigns.nvim",
+	-- 	config = function()
+	-- 		require("plugins.lsp-completion.gitsigns")
+	-- 	end,
+	-- },
 	{
 		"ellisonleao/glow.nvim",
 		config = function()
