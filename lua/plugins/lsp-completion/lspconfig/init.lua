@@ -1,16 +1,51 @@
+local lspconfig = require("lspconfig")
+local lspkind = require("lspkind")
+local lspsaga = require("lspsaga")
+local lspsignature = require("lsp_signature")
+
 local mason = require("mason")
 local masonlsp = require("mason-lspconfig")
-local lspconfig = require("lspconfig")
 local cmp = require("cmp")
-local lspkind = require("lspkind")
 local snippy = require("snippy")
-local lsp_signature = require("lsp_signature")
+
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
+lspsaga.setup({
+	finder = {
+		keys = {
+			expand_or_jump = "<cr>",
+			vsplit = "<c-v>",
+			split = "<c-x>",
+			quit = { "q", "<ESC>" },
+			close_in_preview = "<ESC>",
+		},
+	},
+	definition = {
+		vsplit = "<C-v>",
+		split = "<C-x>",
+		quit = "q",
+	},
+	outline = {
+		win_position = "right",
+		win_with = "",
+		win_width = 30,
+		preview_width = 0.4,
+		show_detail = true,
+		auto_preview = true,
+		auto_refresh = true,
+		auto_close = true,
+		auto_resize = false,
+		custom_sort = nil,
+		keys = {
+			expand_or_jump = "<cr>",
+			quit = "q",
+		},
+	},
+})
 mason.setup({})
 snippy.setup({})
-lsp_signature.setup({
+lspsignature.setup({
 	bind = true,
 	handler_opts = {
 		border = "rounded",

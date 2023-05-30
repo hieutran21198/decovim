@@ -4,23 +4,24 @@ local M = {
 			return {
 				{
 					mappings = {
+						["K"] = { "<cmd>Lspsaga peek_definition<cr>", " Peek definition" },
 						["<leader>"] = {
 							l = {
 								name = " LSP",
-								d = { "<cmd>TroubleToggle lsp_definitions<cr>", " Definition" },
+								d = { "<cmd>Lspsaga lsp_finder<cr>", " Definition" },
+								w = { "<cmd>TroubleToggle document_diagnostics<cr>", " Document diagnostics" },
 								D = { vim.lsp.buf.declaration, " Declaration" },
 								i = { vim.lsp.buf.implementation, " Implementation" },
-								k = { vim.lsp.buf.hover, " Hover" },
+								k = { "<cmd>Lspsaga peek_definition<cr>", " Peek definition" },
 								s = { vim.lsp.buf.signature_help, " Signature" },
-								w = { vim.lsp.buf.add_workspace_folder, " Add workspace folder" },
-								W = { vim.lsp.buf.remove_workspace_folder, " Remove workspace folder" },
 								t = { vim.lsp.buf.type_definition, " Type definition" },
 								r = { vim.lsp.buf.rename, " Rename" },
-								a = { vim.lsp.buf.code_action, " Action" },
+								a = { vim.lsp.buf.code_action, " Code action" },
 								R = { "<cmd>TroubleToggle lsp_references<cr>", " References" },
-								-- R = { vim.lsp.buf.references, " References" },
 								l = { vim.cmd.LspInfo, " LSP Infomation" },
-								o = { vim.cmd.SymbolsOutline, " Symbols outline" },
+								o = { "<cmd>Lspsaga outline<cr>", " Symbols outline" },
+								c = { "<cmd>Lspsaga incoming_calls<cr>", " Incoming calls" },
+								C = { "<cmd>Lspsaga outgoing_calls<cr>", " Outgoing calls" },
 								L = {
 									vim.cmd.LspRestart,
 									"ﰇ Restart LSP",
@@ -33,8 +34,8 @@ local M = {
 								},
 							},
 						},
-						["[e"] = { vim.diagnostic.goto_prev, " Goto previous diagnostic" },
-						["]e"] = { vim.diagnostic.goto_next, " goto next diagnostic" },
+						["[e"] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", " Goto previous diagnostic" },
+						["]e"] = { "<cmd>Lspsaga diagnostic_jump_next<cr>", " goto next diagnostic" },
 					},
 					opts = {
 						mode = "n",

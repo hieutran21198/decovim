@@ -82,7 +82,13 @@ local M = {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+			},
+		},
 		tag = "0.1.1",
 		config = function()
 			require("plugins.ui.telescope")
@@ -106,6 +112,12 @@ local M = {
 	},
 	{
 		"famiu/bufdelete.nvim",
+	},
+	{
+		"m4xshen/smartcolumn.nvim",
+		config = function()
+			require("plugins.ui.smartcolumn")
+		end,
 	},
 }
 

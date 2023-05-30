@@ -15,12 +15,6 @@ local M = {
 		end,
 	},
 	{
-		"simrat39/symbols-outline.nvim",
-		config = function()
-			require("plugins.lsp-completion.symbols-outline")
-		end,
-	},
-	{
 		"jose-elias-alvarez/null-ls.nvim",
 		config = function()
 			require("plugins.lsp-completion.null-ls")
@@ -50,6 +44,14 @@ local M = {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
+			{
+				"nvimdev/lspsaga.nvim",
+				event = "LspAttach",
+				dependencies = {
+					{ "nvim-tree/nvim-web-devicons" },
+					{ "nvim-treesitter/nvim-treesitter" },
+				},
+			},
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "b0o/schemastore.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
@@ -84,6 +86,9 @@ local M = {
 		event = { "CmdlineEnter" },
 		ft = { "go", "gomod" },
 		build = ':lua require("go.install").update_all_sync()',
+		dependencies = {
+			{ "rafaelsq/nvim-goc.lua" },
+		},
 		config = function()
 			require("plugins.lsp-completion.go")
 		end,

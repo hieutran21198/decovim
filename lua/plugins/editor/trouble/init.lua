@@ -6,7 +6,7 @@ require("trouble").setup({
 	mode = "workspace_diagnostics",
 	fold_open = "", -- icon used for open folds
 	fold_closed = "", -- icon used for closed folds
-	group = true, -- group results by file
+	group = false, -- group results by file
 	padding = true, -- add an extra new line on top of the list
 	action_keys = { -- key mappings for actions in the trouble list
 		close = "q", -- close the list
