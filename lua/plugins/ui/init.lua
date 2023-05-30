@@ -61,10 +61,16 @@ local M = {
 			require("plugins.ui.leap")
 		end,
 	},
+	-- {
+	-- 	"voldikss/vim-floaterm",
+	-- 	config = function()
+	-- 		require("plugins.ui.floaterm")
+	-- 	end,
+	-- },
 	{
-		"voldikss/vim-floaterm",
+		"s1n7ax/nvim-terminal",
 		config = function()
-			require("plugins.ui.floaterm")
+			require("plugins.ui.terminal")
 		end,
 	},
 	{
