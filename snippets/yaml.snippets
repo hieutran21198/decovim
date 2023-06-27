@@ -1,0 +1,62 @@
+snippet slsroot "template for root properties"
+	# Service name
+	service: $1
+
+	frameworkVersion: '3'
+
+	configValidationMode: error # error | warn (d) | off
+	useDotenv: true # load env variables from .env files.
+	deprecationNotificationMode: warn:summary
+	disabledDeprecations:
+	  - DEP_CODE_1 # Deprecation code to disable
+	  - '*' # Disable all deprecation messages
+
+
+snippet slsparam "template for param properties"
+	# Stage parameters
+	# https://www.serverless.com/framework/docs/guides/parameters
+	params:
+	  dev:
+	  prod:
+
+snippet provider "template for provider"
+	provider:
+	  name: aws # aws (d) | gcp | azure
+	  stage: ${1:dev} # default stage (dev)
+	  region: ${2:ap-southeast-1}
+	  # The AWS profile to use to deploy (default: "default" profile)
+	  # profile: sls_deploy_profile
+
+	  # Use a custom name for the CloudFormation stack
+	  stackName: $3
+	  deploymentMethod: direct # changesets (d) | direct
+	  disableRollback: false
+
+snippet providerfn "template for provider functions"
+	provider:
+	  runtime: go1.x # https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
+	  runtimeManagement: auto # optional. auto (d) | onFunctionUpdate | manual.
+	  memorySize: 512 # 1024 (d)
+	  timeout: 30 # 6 (d)
+	  environment:
+		APP_ENV_VARIABLE: FOOBAR
+	  logRetentionInDays: 365 # forever (d)
+	  # logDataProtectionPolicy:
+		# Name: data-protection-policy
+	  # kmsKeyArn: arn:aws:kms:us-east-1:XXXXXX:key/some-hash
+	  # lambdaHashingVersion: 20201221
+	  # versionFunctions: true # true (d)
+	  architecture: x86_64 # x86_64 (d) | arm64 via Graviton2
+
+snippet providerdeploymentbucket "template provider deployment bucket config"
+	  #
+	  # Deployment bucket
+	  #
+	  deploymentPrefix: serverless # serverless (d)
+	  deploymentBucket:
+		maxPreviousDeploymentArtifacts: 10
+		blockPublicAccess: true
+		skipPolicySetup: false # true (d)
+		versioning: false
+		serverSideEncryption: AES256
+		

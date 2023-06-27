@@ -6,7 +6,6 @@ end
 local actions = require("telescope.actions")
 
 local options = {
-
 	defaults = {
 		pickers = {
 			colorscheme = {

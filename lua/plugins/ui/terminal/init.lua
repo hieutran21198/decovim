@@ -11,7 +11,7 @@ require("nvim-terminal").setup({
 		width = 100,
 
 		-- Height of the terminal
-		height = 15,
+		height = 10,
 	},
 
 	-- keymap to disable all the default keymaps
@@ -25,18 +25,4 @@ require("nvim-terminal").setup({
 
 	-- increase the window width by when you hit the keymap
 	window_width_change_amount = 2,
-
-	-- keymap to increase the window height
-	increase_height_keymap = "<leader>+",
-
-	-- keymap to decrease the window height
-	decrease_height_keymap = "<leader>-",
-
-	terminals = {
-		{ keymap = "<leader>1" },
-		{ keymap = "<leader>2" },
-		{ keymap = "<leader>3" },
-		{ keymap = "<leader>4" },
-		{ keymap = "<leader>5" },
-	},
 })

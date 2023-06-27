@@ -237,7 +237,7 @@ masonlsp.setup_handlers({
 })
 
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = false,
 	signs = {
 		active = true,
 		values = {

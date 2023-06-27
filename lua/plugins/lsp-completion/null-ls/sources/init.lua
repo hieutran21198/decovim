@@ -7,33 +7,27 @@ M.bind_sources = function(builtins)
 	-- local completion = builtins.completion
 
 	return {
-		formatting.eslint_d,
+		-- formatting.eslint,
 		formatting.fish_indent,
-		formatting.goimports_reviser,
 		formatting.goimports,
+		formatting.goimports_reviser,
+
 		formatting.stylua,
 		formatting.markdownlint,
+		formatting.prettierd,
 
 		diagnostics.editorconfig_checker,
-		diagnostics.eslint_d,
+		diagnostics.eslint,
 		diagnostics.fish,
 		-- diagnostics.golangci_lint,
-		-- diagnostics.revive,
-		diagnostics.staticcheck,
 		diagnostics.write_good,
 
 		diagnostics.luacheck,
 		diagnostics.markdownlint,
-		diagnostics.shellcheck,
 
 		code_actions.shellcheck,
-		-- NOTE: disable for performance
-		-- code_actions.gitsigns,
-
-		code_actions.eslint_d,
-
+		code_actions.eslint,
 		code_actions.gomodifytags,
-		code_actions.impl,
 	}
 end
 

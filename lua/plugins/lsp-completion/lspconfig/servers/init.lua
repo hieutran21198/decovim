@@ -1,6 +1,10 @@
 local M = function(opt)
 	local servers_configs = {
-		marksman = { on_attach = opt.on_attach, flags = opt.lsp_flags, capabilities = opt.capabilities },
+		marksman = {
+			on_attach = opt.on_attach,
+			flags = opt.lsp_flags,
+			capabilities = opt.capabilities,
+		},
 		tsserver = {
 			on_attach = opt.on_attach,
 			flags = opt.lsp_flags,
@@ -73,7 +77,14 @@ local M = function(opt)
 
 		servers_configs["yamlls"] = vim.tbl_deep_extend("force", servers_configs["yamlls"], {
 			settings = {
-				schemas = schemastore.yaml.schemas(),
+				schemas = schemastore.yaml.schemas({
+					extra = {
+						description = "serverless",
+						fileMatch = "serverless.*.yml,serverless.yml,serverless.yaml",
+						name = "serverless.yaml",
+						url = "https://raw.githubusercontent.com/lalcebo/json-schema/master/serverless/reference.json",
+					},
+				}),
 			},
 		})
 	end

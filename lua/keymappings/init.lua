@@ -18,15 +18,19 @@ local normal = {
 		},
 		i = { "<cmd>IconPickerYank<cr>", " Yank icon" },
 		m = { "<cmd>Glow<cr>", " Markdown preview" },
+		u = { "<cmd>UndotreeToggle<cr>", " Undotree" },
 	},
-	["<leader>1"] = {
-		function()
-			terminal_util.toggle(1)
-		end,
-		" Terminal",
+	["<leader>"] = {
+		["1"] = { vim.cmd.NeoTreeFocusToggle, " NeoTree" },
+		["2"] = {
+			function()
+				terminal_util.toggle(1)
+			end,
+			" Terminal",
+		},
+		["6"] = { "<cmd>TroubleToggle document_diagnostics<cr>", " Document diagnostics" },
+		["7"] = { "<cmd>Lspsaga outline<cr>", " Symbols outline" },
 	},
-	-- ["<leader>1"] = { "<cmd>FloatermToggle<cr>", " Terminal" },
-	-- ["<leader>t"] = { "<cmd>FloatermToggle<cr>", " Terminal" },
 	["<leader>d"] = {
 		name = " Debug",
 		c = { "<cmd>lua require('dap').continue()<cr>", " Continue" },
@@ -35,6 +39,7 @@ local normal = {
 		O = { "<cmd>lua require('dap').step_out()<cr>", " Step out" },
 		b = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", " Toggle breakpoint" },
 	},
+	["<leader>D"] = { "<cmd>lua require('dapui').toggle()<cr>", " Dap" },
 	["<leader>e"] = { vim.cmd.NeoTreeFocusToggle, " NeoTree" },
 	["<leader>f"] = {
 		name = " Finding",
@@ -43,7 +48,7 @@ local normal = {
 		f = { "<cmd>Telescope find_files<CR>", " Find file" },
 		F = {
 			"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-			"  Find files (hidden)",
+			" Find files (hidden)",
 		},
 		s = { "<cmd>Telescope live_grep<CR>", " Search text" },
 	},
@@ -57,8 +62,6 @@ local normal = {
 		r = { "<cmd>TroubleRefresh<cr>", " Refresh" },
 		d = { "<cmd>TroubleToggle document_diagnostics<cr>", " Document diagnostics" },
 		w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", " Workspace diagnostics" },
-		q = { "<cmd>TroubleToggle quickfix<cr>", " Quickfix" },
-		l = { "<cmd>TroubleToggle loclist<cr>", " Loclist" },
 	},
 	["<leader>w"] = {
 		name = " Windows",

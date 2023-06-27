@@ -1,4 +1,4 @@
-vim.g.codeium_disable_bindings = 1
+-- vim.g.codeium_disable_bindings = 1
 
 vim.keymap.set("i", "<C-enter>", function()
 	return vim.fn["codeium#Accept"]()

@@ -1,5 +1,6 @@
 local M = {
 	{ "gpanders/editorconfig.nvim" },
+	{ "mbbill/undotree" },
 	{
 		"yamatsum/nvim-cursorline",
 		config = function()
@@ -34,6 +35,12 @@ local M = {
 		},
 		config = function()
 			require("plugins.editor.trouble")
+		end,
+	},
+	{
+		"godlygeek/tabular",
+		config = function()
+			require("plugins.editor.tabular")
 		end,
 	},
 }

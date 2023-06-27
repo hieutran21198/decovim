@@ -9,7 +9,8 @@ end
 
 local M = {
 	-- init_common_colorscheme("ellisonleao/gruvbox.nvim"),
-	init_common_colorscheme("navarasu/onedark.nvim"),
+	init_common_colorscheme("ribru17/bamboo.nvim"),
+	-- init_common_colorscheme("catppuccin/nvim"),
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
@@ -125,6 +126,13 @@ local M = {
 			require("plugins.ui.smartcolumn")
 		end,
 	},
+	-- {
+	-- 	"folke/noice.nvim",
+	-- 	event = "VeryLazy",
+	-- 	config = function()
+	-- 		require("plugins.ui.noice")
+	-- 	end,
+	-- },
 }
 
 return M
