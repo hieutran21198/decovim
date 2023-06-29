@@ -50,6 +50,10 @@ local normal = {
 			"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
 			" Find files (hidden)",
 		},
+		g = {
+			"<cmd>Telescope git_status<cr>",
+			" Git status",
+		},
 		s = { "<cmd>Telescope live_grep<CR>", " Search text" },
 	},
 	["<leader>l"] = {
@@ -72,12 +76,10 @@ local normal = {
 		o = { "<cmd>Telescope buffers<cr>", "﬘ Opened Buffers" },
 	},
 	["<leader>g"] = {
-		name = " Git",
-		b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", " Blame" },
-		p = { "<cmd>lua require('gitsigns').preview_hunk()<cr>", " Preview hunk" },
-		u = { "<cmd>lua require('gitsigns').undo_stage_hunk()<cr>", " Undo stage hunk" },
-		r = { "<cmd>lua require('gitsigns').reset_hunk()<cr>", " Reset hunk" },
-		s = { "<cmd>lua require('gitsigns').stage_hunk()<cr>", " Stage hunk" },
+		name = " Git",
+		C = { "<cmd>Telescope git_commits<cr>", "ﰖ Commits" },
+		c = { "<cmd>Telescope git_bcommits<cr>", "ﰖ Commits for current buffer" },
+		s = { "<cmd>Telescope git_stash<cr>", " Stash list" },
 	},
 	["<leader>b"] = {
 		name = "﬘ Buffer",

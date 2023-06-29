@@ -43,6 +43,11 @@ local M = {
 			require("plugins.editor.tabular")
 		end,
 	},
+	-- {
+	-- 	"akinsho/git-conflict.nvim",
+	-- 	version = "*",
+	-- 	config = true,
+	-- },
 }
 
 return M

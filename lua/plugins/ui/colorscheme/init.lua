@@ -14,6 +14,7 @@
 -- vim.cmd.colorscheme("onedark")
 
 require("bamboo").setup({
+	transparent = true,
 	code_style = {
 		functions = "bold",
 		keywords = "bold",

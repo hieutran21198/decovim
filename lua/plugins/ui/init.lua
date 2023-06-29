@@ -95,6 +95,8 @@ local M = {
 				"nvim-telescope/telescope-fzf-native.nvim",
 				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 			},
+			{ "kkharji/sqlite.lua" },
+			{ "prochri/telescope-all-recent.nvim" },
 		},
 		tag = "0.1.1",
 		config = function()

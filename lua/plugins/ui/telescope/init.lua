@@ -13,6 +13,8 @@ local options = {
 			},
 			find_files = {
 				hidden = true,
+				no_ignore = false,
+				no_ignore_parent = false,
 			},
 		},
 		vimgrep_arguments = {
@@ -61,9 +63,10 @@ local options = {
 		mappings = {
 			n = {
 				["q"] = actions.close,
+				["<esc>"] = require("telescope.actions").close,
 			},
 			i = {
-				["<esc>"] = require("telescope.actions").close,
+				-- ["<esc>"] = require("telescope.actions").close,
 			},
 		},
 	},
@@ -83,3 +86,26 @@ telescope.setup(options)
 pcall(function()
 	telescope.load_extension("fzf")
 end)
+
+local all_recent = require("telescope-all-recent")
+
+all_recent.setup({
+	scoring = {
+		recency_modifier = { -- also see telescope-frecency for these settings
+			[1] = { age = 240, value = 100 }, -- past 4 hours
+			[2] = { age = 1440, value = 80 }, -- past day
+			[3] = { age = 4320, value = 60 }, -- past 3 days
+			[4] = { age = 10080, value = 40 }, -- past week
+			[5] = { age = 43200, value = 20 }, -- past month
+			[6] = { age = 129600, value = 10 }, -- past 90 days
+		},
+		-- how much the score of a recent item will be improved.
+		boost_factor = 0.0001,
+	},
+
+	default = {
+		disable = true, -- disable any unknown pickers (recommended)
+		use_cwd = true, -- differentiate scoring for each picker based on cwd
+		sorting = "recent", -- sorting: options: 'recent' and 'frecency'
+	},
+})
