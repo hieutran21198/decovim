@@ -63,6 +63,15 @@ local M = function(opt)
 			flags = opt.lsp_flags,
 			capabilities = opt.capabilities,
 		},
+		golangci_lint_ls = {
+			filetypes = { "go", "gomod" },
+		},
+		eslint = {
+			-- vim.api.nvim_create_autocmd("BufWritePre", {
+			--       buffer = bufnr,
+			--       command = "EslintFixAll",
+			--     })
+		},
 	}
 
 	local schemastore_ok, schemastore = pcall(require, "schemastore")

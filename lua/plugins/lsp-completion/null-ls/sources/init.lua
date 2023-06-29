@@ -17,7 +17,7 @@ M.bind_sources = function(builtins)
 		formatting.prettierd,
 
 		diagnostics.editorconfig_checker,
-		diagnostics.eslint,
+		-- diagnostics.eslint,
 		diagnostics.fish,
 		-- diagnostics.golangci_lint,
 		diagnostics.write_good,
