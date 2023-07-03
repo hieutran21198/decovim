@@ -68,12 +68,12 @@ local M = {
 	-- 		require("plugins.ui.floaterm")
 	-- 	end,
 	-- },
-	{
-		"s1n7ax/nvim-terminal",
-		config = function()
-			require("plugins.ui.terminal")
-		end,
-	},
+	-- {
+	-- 	"s1n7ax/nvim-terminal",
+	-- 	config = function()
+	-- 		require("plugins.ui.terminal")
+	-- 	end,
+	-- },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
@@ -128,6 +128,18 @@ local M = {
 			require("plugins.ui.smartcolumn")
 		end,
 	},
+	{
+		"akinsho/toggleterm.nvim",
+		config = function()
+			require("plugins.ui.toggleterm")
+		end,
+	},
+	-- {
+	-- 	"ldelossa/nvim-ide",
+	-- 	config = function()
+	-- 		require("plugins.ui.ide")
+	-- 	end,
+	-- },
 	-- {
 	-- 	"folke/noice.nvim",
 	-- 	event = "VeryLazy",

@@ -1,5 +1,14 @@
-local terminal_util = require("plugins.ui.terminal.util")
 local normal = {
+	q = {
+		function()
+			local buf = vim.api.nvim_get_current_buf()
+			local ft = vim.api.nvim_buf_get_option(buf, "filetype")
+			if ft == "toggleterm" then
+				vim.cmd.ToggleTermToggleAll()
+			end
+		end,
+		" Quit",
+	},
 	["<leader>u"] = {
 		name = " Utils",
 		v = {
@@ -24,12 +33,34 @@ local normal = {
 		["1"] = { vim.cmd.NeoTreeFocusToggle, " NeoTree" },
 		["2"] = {
 			function()
-				terminal_util.toggle(1)
+				local bufs = vim.api.nvim_list_bufs()
+				local found_toggle_term_instance = false
+
+				for _, buf in ipairs(bufs) do
+					local ft = vim.api.nvim_buf_get_option(buf, "filetype")
+					if ft == "toggleterm" then
+						found_toggle_term_instance = true
+						-- vim.cmd.ToggleTermToggleAll()
+					end
+				end
+
+				if not found_toggle_term_instance then
+					vim.cmd.ToggleTerm()
+				else
+					vim.cmd.ToggleTermToggleAll()
+				end
 			end,
 			" Terminal",
 		},
 		["6"] = { "<cmd>TroubleToggle document_diagnostics<cr>", " Document diagnostics" },
 		["7"] = { "<cmd>Lspsaga outline<cr>", " Symbols outline" },
+	},
+	["<leader>t"] = {
+		-- tabular
+		name = "匿 Tabular",
+		["="] = { "<cmd>Tab /=<cr>", "=" },
+		[":"] = { "<cmd>Tab /:\zs<cr>", ":" },
+		["1"] = {},
 	},
 	["<leader>d"] = {
 		name = " Debug",
@@ -146,7 +177,12 @@ local normal = {
 	["<esc>"] = {
 		function()
 			vim.cmd([[nohl]])
-			-- vim.cmd("FloatermHide")
+			local buf = vim.api.nvim_get_current_buf()
+			local ft = vim.api.nvim_buf_get_option(buf, "filetype")
+
+			if ft == "toggleterm" then
+				vim.cmd.ToggleTermToggleAll()
+			end
 		end,
 		"Map ESC",
 	},

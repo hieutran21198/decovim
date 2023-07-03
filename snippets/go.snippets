@@ -1,64 +1,30 @@
-snippet rqrp "template request response"
-	type (
-			// $1Request is the input data for the business logic of $1.
-			$1Request struct{}
-
-			// $1Response is the output data for the business logic of $1.
-			$1Response struct{}
-		)
-
-snippet repository "template repository"
-	// $1 represents the $2 repository.
-	type $1 struct {
-		db *gorm.DB
-		*Common[model.$1]
-	}
-
-	// WithTx implements repo.TxRepo.
-	func (*$1) WithTx(tx *gorm.DB) nsrepo.$1Repository {
-		return New$1Repo(tx)
-	}
-
-	var (
-		_ nsrepo.$1Repository                = &$1{}
-		_ nsrepo.TxRepo[nsrepo.$1Repository] = &$1{}
-	)
-
-	// New$1Repo creates a new $2 repository.
-	func New$1Repo(db *gorm.DB) *$1 {
-		return &$1{
-			db:     db,
-			Common: NewCommonRepo[model.$1](db),
-		}
-	}
-
-snippet service "template service"
+snippet service " 1"
 	// Service represents the $1 service.
 	type Service struct {
-		repos *nsrepo.Repositories
+		repos *repo.Repositories
+
+		//
 	}
 
 	var (
-		// implement $1 definition.
-		_ ns$1.Service = &Service{}
+		_ HTTPResolver     = &Service{}
+		_ ModellingHandler = &Service{}
 	)
 
-	// New creates a Service.
-	func New(repos *nsrepo.Repositories) *Service {
-		return &Service{
-			repos: repos,
+	// New creates new $1 service.
+	func New(repos *repo.Repositories) *Service {
+		s := &Service{
+			repos:     repos,
 		}
+
+		return s
 	}
 
-snippet http "template http"
-	// HTTP handles http requests for $1 service.
-	type HTTP struct {
-		$1Service ns$1.Service
-	}
+snippet rqrp " 2"
+	type (
+		// $1Request is the input data for the business logic of $1.
+		$1Request struct {}
 
-	// NewHTTP creates a new HTTP.
-	func NewHTTP($1Service ns$1.Service) *HTTP {
-		return &HTTP{
-			$1Service: $1Service,
-		}
-	}
+		// $1Response is the output data for the business logic of $1.
+		$1Response struct{}
+	)
