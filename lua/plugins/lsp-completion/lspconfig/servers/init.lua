@@ -66,6 +66,11 @@ local M = function(opt)
 		golangci_lint_ls = {
 			filetypes = { "go", "gomod" },
 		},
+		bashls = {
+			on_attach = opt.on_attach,
+			flags = opt.lsp_flags,
+			capabilities = opt.capabilities,
+		},
 		eslint = {
 			-- vim.api.nvim_create_autocmd("BufWritePre", {
 			--       buffer = bufnr,

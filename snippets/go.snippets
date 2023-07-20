@@ -7,14 +7,13 @@ snippet service " 1"
 	}
 
 	var (
-		_ HTTPResolver     = &Service{}
-		_ ModellingHandler = &Service{}
+		_ types.$1Service = &Service{}
 	)
 
-	// New creates new $1 service.
+	// New creates new instance of Service.
 	func New(repos *repo.Repositories) *Service {
 		s := &Service{
-			repos:     repos,
+			repos: repos,
 		}
 
 		return s
