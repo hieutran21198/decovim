@@ -27,3 +27,29 @@ snippet rqrp " 2"
 		// $1Response is the output data for the business logic of $1.
 		$1Response struct{}
 	)
+
+snippet repo ""
+	// $1 is the model of $2.
+	type $1 struct {
+		Model
+	}
+
+	type $2Repository struct {
+		db *gorm.DB
+		CommonRepository[$1, $1Repository]
+	}
+
+	// $1Repository represents the repository of $1.
+	type $1Repository interface {
+		CommonRepository[$1, $1Repository]
+	}
+
+	// New$1Repository creates new $2 repository.
+	func New$1Repository(db *gorm.DB) $1Repository {
+		r := &$2Repository{
+			db,
+			NewCommonRepository[$1, $1Repository](db, New$1Repository),
+		}
+
+		return r
+	}

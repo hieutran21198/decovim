@@ -1,10 +1,10 @@
 local actions = require("actions")
 
 local normal = {
-	q = { actions.close_on_terminal, " Toggle Terminal" },
+	q = { actions.close_on_terminal, "󰅳 Toggle Terminal" },
 	["<leader>u"] = {
-		name = " Utils",
-		v = { actions.toggle_virtual_text, " Virtual Text" },
+		name = "󰏡 Utils",
+		v = { actions.toggle_virtual_text, "󰅳 Virtual Text" },
 		l = { actions.toggle_breadcums, " Breadcums" },
 		i = { actions.pick_yank_icon, " Yank icon" },
 		m = { actions.preview_markdown, " Markdown Preview" },
@@ -17,12 +17,12 @@ local normal = {
 	["<leader>"] = {
 		["1"] = { actions.focus_toggle_explorer(true), " Explorer" },
 		["2"] = { actions.toggle_terminal, " Terminal" },
-		["7"] = { actions.lsp_outline(false), " Symbols outline" },
+		["7"] = { actions.lsp_outline(false), " Symbols outline" },
 	},
 	["<leader>e"] = { actions.focus_toggle_explorer(true), " NeoTree" },
 	["<leader>f"] = {
-		name = " Finding",
-		f = { actions.finding_or_resume({ type = "file" }), " Find file" },
+		name = "󰈞 Finding",
+		f = { actions.finding_or_resume({ type = "file" }), "󰈞 Find file" },
 		F = {
 			actions.finding_or_resume({
 				type = "file",
@@ -30,7 +30,7 @@ local normal = {
 			}),
 			" Find files (hidden)",
 		},
-		g = { "<cmd>Telescope git_status<cr>", " Git status" },
+		g = { "<cmd>Telescope git_status<cr>", "󰊢 Git status" },
 		s = { actions.finding_or_resume({ type = "text" }), " Search text" },
 	},
 
@@ -40,25 +40,25 @@ local normal = {
 		h = { actions.select_window("h"), "← Select Window At The Left" },
 		j = { actions.select_window("j"), "↓ Select Window At The Bottom" },
 		k = { actions.select_window("k"), "↑ Select Window At The Top" },
-		o = { actions.finding_or_resume({ type = "buffer" }), "﬘ Opened Buffers" },
+		o = { actions.finding_or_resume({ type = "buffer" }), " Opened Buffers" },
 	},
 	["<leader>g"] = {
 		name = " Git",
-		C = { actions.git_list_commits(), "ﰖ Commits" },
-		c = { actions.git_list_commits(true), "ﰖ Commits for current buffer" },
-		s = { actions.git_stash_list, " Stash list" },
+		C = { actions.git_list_commits(), "󰜘 Commits" },
+		c = { actions.git_list_commits(true), "󰜘 Commits for current buffer" },
+		s = { actions.git_stash_list, "󱡠 Stash list" },
 	},
 	["<leader>b"] = {
-		name = "﬘ Buffer",
+		name = " Buffer",
 		c = { vim.cmd.ColorizerToggle, " Toggle colors" },
-		n = { vim.cmd([[enew]]), " New buffer" },
+		n = { vim.cmd([[enew]]), " New buffer" },
 		q = {
 			function()
 				require("bufdelete").bufdelete(0, true)
 			end,
-			" Close buffer",
+			" Close buffer",
 		},
-		o = { actions.finding_or_resume({ type = "buffer" }), "﬘ Opened Buffers" },
+		o = { actions.finding_or_resume({ type = "buffer" }), " Opened Buffers" },
 		y = {
 			actions.yank_content_of_file,
 			" Yank content of files",
@@ -76,7 +76,7 @@ local normal = {
 			function()
 				require("trouble").previous({ skip_groups = true, jump = true })
 			end,
-			" Previous Trouble",
+			"󰅁 Previous Trouble",
 		},
 		g = { "<cmd>lua require('gitsigns').prev_hunk()<cr>", " Previous hunk" },
 	},
@@ -92,7 +92,7 @@ local normal = {
 			function()
 				require("trouble").next({ skip_groups = true, jump = true })
 			end,
-			" Next Trouble",
+			"󰅁 Next Trouble",
 		},
 		g = { "<cmd>lua require('gitsigns').next_hunk()<cr>", " Next hunk" },
 	},
@@ -104,7 +104,7 @@ local normal = {
 	-- 	R = { "<cmd>Trouble lsp_references<cr>", " LSP References" },
 	-- },
 	-- ["<leader>x"] = {
-	-- 	name = " Trouble",
+	-- 	name = "󰅁 Trouble",
 	-- 	t = { "<cmd>TroubleToggle<cr>", " Toggle" },
 	-- 	r = { "<cmd>TroubleRefresh<cr>", " Refresh" },
 	-- 	d = { "<cmd>TroubleToggle document_diagnostics<cr>", " Document diagnostics" },
@@ -124,7 +124,7 @@ local normal = {
 
 local visual = {
 	d = { '"_d', "Delete without saving content to register" },
-	f = { '"zy:Telescope live_grep default_text=<C-r>z<cr>', " Find current text." },
+	f = { '"zy:Telescope live_grep default_text=<C-r>z<cr>', "󰈞 Find current text." },
 	["<leader>l"] = {
 		name = " LSP",
 		a = { ":'<,'>lua vim.lsp.buf.range_code_action()<CR>", " Code action" },
@@ -132,7 +132,7 @@ local visual = {
 }
 
 local terminal = {
-	["<ESC>"] = { "<c-\\><c-n>", " Back to normal mode" },
+	["<ESC>"] = { "<c-\\><c-n>", "󰗼 Back to normal mode" },
 }
 
 local M = {

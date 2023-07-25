@@ -8,17 +8,6 @@ if os == "Windows" then
 	return
 end
 
-if vim.g.vscode then
-	-- vscode extension
-	--
-	vim.g.mapleader = " "
-	vim.g.maplocalleader = " "
-	vim.opt.clipboard = "unnamedplus"
-
-	vim.cmd([[source $HOME/.config/nvim/vscode/settings.vim]])
-	return
-end
-
 local utils = require("utils")
 
 local plugins = utils.combine_plugins(function()
