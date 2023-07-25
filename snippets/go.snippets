@@ -53,3 +53,23 @@ snippet repo ""
 
 		return r
 	}
+snippet repo_only "-> 3"
+	type $1Repository struct {
+		db *gorm.DB
+		CommonRepository[$2, $2Repository]
+	}
+
+	// $2Repository represents the repository of $2.
+	type $2Repository interface {
+		CommonRepository[$2, $2Repository]
+	}
+
+	// New$2Repository creates new $1 repository.
+	func New$2Repository(db *gorm.DB) $2Repository {
+		r := &$1Repository{
+			db,
+			NewCommonRepository[$2, $2Repository](db, New$2Repository),
+		}
+
+		return r
+	}

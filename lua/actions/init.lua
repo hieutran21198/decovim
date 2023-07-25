@@ -169,31 +169,29 @@ M.tabular = function(char)
 end
 
 M.finding_or_resume = function(opts)
-	local def = {
-		type = "file",
-	}
-
-	def = vim.tbl_deep_extend("force", def, opts or {})
-
-	local map_type_action = {
-		["file"] = "find_files",
-		["text"] = "live_grep",
-		["buffer"] = "buffers",
-	}
-
 	return function()
-		local action
+		local def = opts or {
+			type = "file",
+		}
 
-		action = map_type_action[def.type]
+		local map_type_action = {
+			["file"] = "find_files",
+			["text"] = "live_grep",
+			["buffer"] = "buffers",
+			["commit"] = "git_commits",
+			["bcommit"] = "git_bcommits",
+		}
+
+		local action = map_type_action[def.type]
 		if action == nil or action == "" then
-			action = "resume"
+			return
 		end
 
 		if M.finding_history ~= nil and M.finding_history == def.type then
 			action = "resume"
 		end
 
-		if def.args ~= nil then
+		if def.args ~= nil and action ~= "resume" then
 			action = action .. " " .. def.args
 		end
 

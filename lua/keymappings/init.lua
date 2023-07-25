@@ -44,8 +44,8 @@ local normal = {
 	},
 	["<leader>g"] = {
 		name = " Git",
-		C = { actions.git_list_commits(), "󰜘 Commits" },
-		c = { actions.git_list_commits(true), "󰜘 Commits for current buffer" },
+		C = { actions.finding_or_resume({ type = "commit" }), "󰜘 Commits" },
+		c = { actions.finding_or_resume({ type = "bcommit" }), "󰜘 Commits for current buffer" },
 		s = { actions.git_stash_list, "󱡠 Stash list" },
 	},
 	["<leader>b"] = {
