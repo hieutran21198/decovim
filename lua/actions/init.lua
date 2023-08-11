@@ -1,9 +1,7 @@
 local api = vim.api
 local cmd = vim.cmd
 
-local M = {
-	finding_history = nil,
-}
+local M = {}
 
 -- get current filetype under the cursor.
 M.get_current_filetype = function(buf)
@@ -160,7 +158,7 @@ end
 
 M.tabular = function(char)
 	return function()
-		if char == ":" then
+		if char == "\\" then
 			cmd([[ Tab /:\zs ]])
 		elseif char == "=" then
 			cmd([[ Tab /= ]])
@@ -170,9 +168,9 @@ end
 
 M.finding_or_resume = function(opts)
 	return function()
-		local def = opts or {
-			type = "file",
-		}
+		if opts == nil then
+			cmd([[ Telescope resume ]])
+		end
 
 		local map_type_action = {
 			["file"] = "find_files",
@@ -182,21 +180,17 @@ M.finding_or_resume = function(opts)
 			["bcommit"] = "git_bcommits",
 		}
 
-		local action = map_type_action[def.type]
+		local action = map_type_action[opts.type]
 		if action == nil or action == "" then
 			return
 		end
 
-		if M.finding_history ~= nil and M.finding_history == def.type then
-			action = "resume"
-		end
-
-		if def.args ~= nil and action ~= "resume" then
-			action = action .. " " .. def.args
+		if opts.args ~= nil then
+			action = action .. " " .. opts.args
 		end
 
 		cmd("Telescope " .. action)
-		M.finding_history = def.type
+		M.finding_history = opts.type
 	end
 end
 
@@ -253,6 +247,10 @@ end
 
 M.git_stash_list = function()
 	return cmd([[ Telescope git_stash ]])
+end
+
+M.todo_list = function()
+	return cmd([[ TodoTelescope ]])
 end
 
 M.yank_content_of_file = function()

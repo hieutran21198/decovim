@@ -4,6 +4,7 @@ local normal = {
 	q = { actions.close_on_terminal, "󰅳 Toggle Terminal" },
 	["<leader>u"] = {
 		name = "󰏡 Utils",
+		k = { actions.custom_picker, "customer picker" },
 		v = { actions.toggle_virtual_text, "󰅳 Virtual Text" },
 		l = { actions.toggle_breadcums, " Breadcums" },
 		i = { actions.pick_yank_icon, " Yank icon" },
@@ -30,8 +31,11 @@ local normal = {
 			}),
 			" Find files (hidden)",
 		},
+		r = { actions.resume_telescope, " Resume recent searched results" },
+		h = { actions.resume_telescope, " Resume recent searched results" },
 		g = { "<cmd>Telescope git_status<cr>", "󰊢 Git status" },
 		s = { actions.finding_or_resume({ type = "text" }), " Search text" },
+		t = { actions.todo_list, " Todo" },
 	},
 
 	["<leader>w"] = {

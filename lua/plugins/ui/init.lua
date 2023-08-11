@@ -9,7 +9,7 @@ end
 
 local M = {
 	-- init_common_colorscheme("ellisonleao/gruvbox.nvim"),
-	init_common_colorscheme("ribru17/bamboo.nvim"),
+	init_common_colorscheme("ellisonleao/gruvbox.nvim"),
 	-- init_common_colorscheme("catppuccin/nvim"),
 	{
 		"norcalli/nvim-colorizer.lua",
